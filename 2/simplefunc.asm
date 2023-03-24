@@ -27,8 +27,8 @@ sim_strcpy:
 __sim_strcpy_loop:
 	cmp	rax, rdx
 	je	__sim_strcpy_end
-	mov	dl, byte [rdi + rax]
-	mov	byte [rsi + rax], dl
+	mov	r8b, byte [rdi + rax]
+	mov	byte [rsi + rax], r8b
 	cmp	byte [rdi + rax], 0
 	jz	__sim_strcpy_end
 	inc	rax

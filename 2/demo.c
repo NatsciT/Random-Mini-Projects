@@ -10,7 +10,7 @@ int main(int argc, char** argv)
 	if(argc != 2)
 		return -1;
 
-	printf("%ld\n%s\n", sim_strcpy(argv[1], empty, 10), empty);
+	printf("%ld\n%s\n", sim_strcpy(argv[1], empty, 5), empty);
 	
 	return 0;
 }
