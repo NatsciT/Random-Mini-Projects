@@ -1,0 +1,12 @@
+---- strcat ----
+str1: 7ffd69acab10d, ret: 7ffd69acab10d
+string: test1StringTest
+
+---- strcpy ----
+before: StringTestStrin
+count: 15
+after: StringTestStrin
+
+---- strlen ----
+length: 16
+
