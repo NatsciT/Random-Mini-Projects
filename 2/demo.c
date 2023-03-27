@@ -25,7 +25,9 @@ int main(int argc, char** argv)
 			str2);
 
 	puts("---- strlen ----");
-	printf("length: %ld\n\n", sim_strlen(argv[1]));
+	printf("string: %s\nlength: %ld\n\n",
+			argv[1],
+			sim_strlen(argv[1]));
 
 	return 0;
 }

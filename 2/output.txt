@@ -1,5 +1,5 @@
 ---- strcat ----
-str1: 7ffd69acab10d, ret: 7ffd69acab10d
+str1: 7ffc534b8940d, ret: 7ffc534b8940d
 string: test1StringTest
 
 ---- strcpy ----
@@ -8,5 +8,6 @@ count: 15
 after: StringTestStrin
 
 ---- strlen ----
+string: StringTestString
 length: 16
 
