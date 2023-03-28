@@ -19,7 +19,7 @@ int main(int argc, char** argv)
 			str1);
 
 	puts("---- strcpy ----");
-	printf("before: %s\ncount: %ld\nafter: %s\n\n",
+	printf("before: %s\ncount: %s\nafter: %s\n\n",
 			str2,
 			sim_strcpy(argv[1], str2, 16),
 			str2);
