@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "block.h"
 #include "linkedlist.h"
 
 
@@ -8,8 +9,11 @@
 int main(int argc, char* argv[])
 {
 	LinkedList l;
-	Data tmp;
+	Data data;
+	Block* pb;
+
 	int i;
+	char buf[BLOCK_HEIGHT][BLOCK_WIDTH];
 
 	if(argc < 2)
 	{
@@ -20,24 +24,18 @@ int main(int argc, char* argv[])
 	if(!ListInit(&l)) return -1;
 
 	for(i = 1; i < argc; i++)
-	{
 		ListInsertNext(&l, argv[i]);
-		printf("%d\n", ListItemCount(&l));
-	}
 
 	ListNavigate(&l, NODE_HEAD);
-
-	while(tmp = ListNavigate(&l, NODE_NEXT))
-		printf("%s ", tmp);
-
-	ListNavigate(&l, NODE_HEAD);
-	printf("\n");
-
-	while(ListItemCount(&l))
+	while(data = ListNavigate(&l, NODE_NEXT))
 	{
-		printf("%d. ", ListItemCount(&l));
-		printf("%s\n", ListDeleteNext(&l));
-	}
+		pb = NodeToBlock(&l, l.cur);
+		
+		StampBlockToBuffer(*pb, buf);
+
+		for(i = 0; i < BLOCK_HEIGHT; i++)
+			printf("%s\n", buf[i]);
+	}	
 
 	ListFree(&l);
 	return 0;
