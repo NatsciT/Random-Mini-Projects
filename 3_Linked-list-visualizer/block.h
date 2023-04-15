@@ -1,5 +1,6 @@
 #pragma once
 #include "linkedlist.h"
+#include "buffer.h"
 
 #define DATA_COUNT	18
 
@@ -19,4 +20,4 @@ typedef struct __block
 } Block;
 
 Block* NodeToBlock(LinkedList* pList, Node* pNode);
-void StampBlockToBuffer(Block block, char (*twodbuffer)[BLOCK_WIDTH]);
+void StampBlockToBuffer(Block block, Buffer buffer);

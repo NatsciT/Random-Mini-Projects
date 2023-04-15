@@ -5,7 +5,6 @@
 #include "block.h"
 
 
-
 Block* NodeToBlock(LinkedList* pList, Node* pNode)
 {
 	Block* newBlock = malloc(sizeof(Block));
@@ -27,31 +26,45 @@ void StampBlockToBuffer(Block block, char (*twodbuffer)[BLOCK_WIDTH])
 {
 	char temp[64];
 
-	// addr
-	sprintf(temp, "%#018lx   ┌─▶", (unsigned long)block.addr);
-	strcpy(twodbuffer[0], temp); 
-
-	// wall 1
-	strcpy(twodbuffer[1], "┌──────────────────┐ │");
-
-	// data
-	sprintf(temp, "│%-18s│ │", block.data);
-	strncpy(twodbuffer[2], temp, BLOCK_WIDTH);
-
-	// wall 2
-	strncpy(twodbuffer[3], "├──────────────────┤ │", BLOCK_WIDTH);
-
-	// next addr
-	if(block.next) // if not tail
+	if(block.next)
 	{
+		// addr
+		sprintf(temp, "%#018lx   ┌─▶", (unsigned long)block.addr);
+		strcpy(twodbuffer[0], temp); 
+
+		// wall 1
+		strcpy(twodbuffer[1], "┌──────────────────┐ │");
+
+		// data
+		sprintf(temp, "│%-18s│ │", block.data);
+		strncpy(twodbuffer[2], temp, BLOCK_WIDTH);
+
+		// wall 2
+		strncpy(twodbuffer[3], "├──────────────────┤ │", BLOCK_WIDTH);
+	
+		// next addr
 		sprintf(temp, "│%#018lx●─┘", (unsigned long)block.next);
 		strncpy(twodbuffer[4], temp, BLOCK_WIDTH);
 	}
 	else
 	{
+		// addr
+		sprintf(temp, "%#018lx", (unsigned long)block.addr);
+		strcpy(twodbuffer[0], temp); 
+
+		// wall 1
+		strcpy(twodbuffer[1], "┌──────────────────┐");
+
+		// data
+		sprintf(temp, "│%-18s│", block.data);
+		strncpy(twodbuffer[2], temp, BLOCK_WIDTH);
+
+		// wall 2
+		strncpy(twodbuffer[3], "├──────────────────┤", BLOCK_WIDTH);
+	
+		// next addr
 		strncpy(twodbuffer[4], "│NULL              ○", BLOCK_WIDTH);
 	}
-
 	// wall 3
 	strncpy(twodbuffer[5], "└──────────────────┘", BLOCK_WIDTH);
 
