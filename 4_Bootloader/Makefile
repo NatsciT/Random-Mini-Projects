@@ -17,4 +17,4 @@ load: ${flp}
 	dd if=${ldr_bin} of=${outdir}/${flp} seek=0 count=1 conv=notrunc
 
 floppy:
-	dd if=/dev/zero of=${flp} bs=1024 count=1440
+	dd if=/dev/zero of=${outdir}/${flp} bs=1024 count=1440
