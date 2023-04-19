@@ -24,7 +24,7 @@ main.L1:
 
 
 clear_screen:
-	mov	ax, 0x0003	; 80x25 text mode, color
+	mov	ax, 0x0003
 	int	0x10
 	ret
 

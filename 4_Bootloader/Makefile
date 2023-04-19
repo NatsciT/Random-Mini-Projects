@@ -1,7 +1,7 @@
 MAKEFLAGS += --silent
 
-ldr_asm := ldr.asm
-ldr_bin := ldr.bin
+asm := ldr.asm
+bin := ldr.bin
 flp := floppy.img
 
 outdir := .
@@ -10,11 +10,11 @@ outdir := .
 all: clean floppy load
 
 clean:
-	rm -f ${flp} ${ldr_bin}
+	rm -f ${flp} ${bin}
 
-load: ${flp}
-	nasm -o ${ldr_bin} -fbin ldr.asm
-	dd if=${ldr_bin} of=${outdir}/${flp} seek=0 count=1 conv=notrunc
+load: ${outdir}/${flp}
+	nasm -o ${bin} -fbin ${asm}
+	dd if=${bin} of=${outdir}/${flp} seek=0 count=1 conv=notrunc
 
 floppy:
 	dd if=/dev/zero of=${outdir}/${flp} bs=1024 count=1440
