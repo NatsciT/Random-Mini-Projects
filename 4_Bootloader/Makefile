@@ -7,12 +7,12 @@ flp := floppy.img
 outdir := .
 
 
-all: clean floppy load
+all: clean floppy loader
 
 clean:
 	rm -f ${flp} ${bin}
 
-load: ${outdir}/${flp}
+loader: ${outdir}/${flp}
 	nasm -o ${bin} -fbin ${asm}
 	dd if=${bin} of=${outdir}/${flp} seek=0 count=1 conv=notrunc
 
