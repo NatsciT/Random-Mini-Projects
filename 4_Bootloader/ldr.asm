@@ -1,13 +1,11 @@
 bits	16
-
-org	0x7c00
+org	0x7C00
 
 main:
 	call	clear_screen
 
 	mov	si, msg
 	call	print_str
-
 main.L1:
 	call	read_char
 	test	al, al
@@ -31,11 +29,11 @@ clear_screen:
 print_str:
 	lodsb
 	or	al, al
-	jz	__print_str_done
+	jz	print_str.L1
 	mov	ah, 0x0E
 	int	0x10
 	jmp	print_str
-__print_str_done:
+print_str.L1:
 	ret
 
 ; BH = page number CX = number of times to repeat AL = ASCII code BL = attrib
